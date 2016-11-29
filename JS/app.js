@@ -7,21 +7,18 @@ function genRandomNum(min, max) {
   return Math.round((Math.random() * (max-min)) + min);
 }
 
-function Box(top) {
-  this.top = top;
+$('button').on('click', function() {
+  setInterval(function() {
+    new Box();
+  },2000);
+});
+
+function Box() {
   var $newDiv = $('<div>');
   $newDiv.addClass('droppinDiv');
-  containers[genRandomNum(0,3)].append($newDiv);
-  $newDiv.animate({
-    top: 0,
-    left: 0
-  })
+  containers[genRandomNum(0,3)].prepend($newDiv);
+
+  setInterval(function() {
+      $newDiv.animate({top: "+=30"},100);
+  });
 }
-
-
-
-
-
-$('button').on('click', function() {
-  new Box(0);
-});
