@@ -1,0 +1,36 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  height: 100%;
+}
+#container1 {
+  position: absolute;
+  height: 100%;
+  width: 101px;
+  border: 1px solid black;
+}
+#container2 {
+  position: absolute;
+  height: 100%;
+  width: 101px;
+  border: 1px solid black;
+  top: 27px;
+  left: 111px;
+}
+#container3 {
+  position: absolute;
+  height: 100%;
+  width: 101px;
+  border: 1px solid black;
+  display: inline-block;
+  top: 27px;
+  left: 214px;
+}
+.droppinDiv {
+  height: 50px;
+  width: 50px;
+  background: red;
+  display: block;
+}
