@@ -1,14 +1,16 @@
 var container1 = $('#container1');
 var container2 = $('#container2');
 var container3 = $('#container3');
-var containers = [container1, container2, container3];
+var container4 = $('#container4');
+var container5 = $('#container5');
+var containers = [container1, container2, container3, container4, container5];
 var main = $('#mainContainer');
 var catcher = $('#catcher');
 var score = 0;
 var scoreboard = $('#score');
 var theTime = $('#timer');
 
-$(container2).append(catcher);
+$(container3).append(catcher);
 
 function genRandomNum(min, max) {
   return Math.round((Math.random() * (max-min)) + min);
@@ -18,7 +20,7 @@ function genRandomNum(min, max) {
 function Box() {
   var $newDiv = $('<div>');
   $newDiv.addClass('droppinDiv');
-  $(containers[genRandomNum(0,3)]).prepend($newDiv);
+  $(containers[genRandomNum(0,5)]).prepend($newDiv);
 
   setInterval(function() {
     if ($newDiv.offset().top > 725) {
