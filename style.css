@@ -1,14 +1,23 @@
 body {
-  height: 100%;
-  width: 100%;
   background-image: url('/Users/MattAlon/projects/project-one/northpole.png');
   background-size: cover;
   background-repeat: no-repeat;
+  width: 99%;
 }
 #scoreboard {
   height: 205px;
   width: 200px;
-  border: 2px solid #b3b3b3;
+  border: 5px dashed red;
+  border-radius: 15%;
+  text-align: center;
+  font-size: 20px;
+  float: left;
+  margin-left: 10px;
+}
+#scoreboard2 {
+  height: 205px;
+  width: 200px;
+  border: 5px dashed red;
   border-radius: 15%;
   text-align: center;
   font-size: 20px;
@@ -24,14 +33,26 @@ body {
   top: 700px;
   left: 50%;
 }
-#timer {
-  color: teal;
+#timer1 {
+  color: #40CAAB;
   text-shadow: 1px 1px lightgrey;
   font-weight: bold;
   font-size: 50px;
 }
-#score {
-  color: teal;
+#timer2 {
+  color: #40CAAB;
+  text-shadow: 1px 1px lightgrey;
+  font-weight: bold;
+  font-size: 50px;
+}
+#score1 {
+  color: #40CAAB;
+  text-shadow: 1px 1px lightgrey;
+  font-weight: bold;
+  font-size: 50px;
+}
+#score2 {
+  color: #40CAAB;
   text-shadow: 1px 1px lightgrey;
   font-weight: bold;
   font-size: 50px;
@@ -42,12 +63,43 @@ body {
   color: black;
   text-shadow: 1px 1px white;
 }
+.navbar {
+  width: 98%;
+}
+ul {
+  width: 100%;
+  background-color: #C1C8C7;
+}
+a {
+  text-decoration: none;
+  color: #6FF0C3;
+}
+a:hover {
+  color: white;
+  background: rgba(0,0,0,0.3);
+}
+li {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .droppinDiv {
   height: 50px;
   width: 50px;
   display: block;
   position: absolute;
-  margin-left: 25px;
+}
+.snowflake {
+  height: 50px;
+  width: 50px;
+  display: block;
+  position: absolute;
+}
+.snowflakeImg {
+  height: 50px;
+  width: 50px;
 }
 .northpole {
   height: 100%;
@@ -63,23 +115,23 @@ body {
 }
 .start {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
   padding: 0;
   font-size: 20px;
   font-weight: bold;
-  background-color: lightgrey;
-  color: teal;
+  background-color: #C1C8C7;
+  color: #6FF0C3;
   position: relative;
-  top: 222px;
-  left: 1515px;
+  top: 50px;
+  left: 37%;
 }
 .start:hover {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   color: white;
-  box-shadow: 1px 1px 1px 1px black;
+  box-shadow: 2px 1px 2px 1px black;
 }
 h1 {
   margin: 0 auto;

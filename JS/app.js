@@ -1,14 +1,47 @@
 var main = $('#mainContainer');
 var catcher = $('#catcher');
-var scoreboard = $('#score');
+// var score = $('#score');
+// var score2 = $('#score2');
 var theTime = $('#timer');
+var Min = 100;
+var Max = 1075;
 $('body').append(catcher);
 catcher.html('<img src="./santa.png" class="santa">');
+// $('.navbar').css($(window))
 
 // generates random number between its min and max value
 function genRandomNum(min, max) {
   return Math.round((Math.random() * (max-min)) + min);
 }
+
+// set timer on the following anonymous function...
+setInterval(function() {
+  // create a new div
+  var $snowflake = $('<div>');
+  // add a class to the new div
+  $snowflake.addClass('snowflake');
+  // add an img to the div
+  $snowflake.html('<img src="./snowflake.png" class="snowflakeImg">');
+  // give it a random left value
+  $snowflake.css('left', '+=' + genRandomNum(100, 1600));
+  // add it twice to the body
+  $('body').prepend($snowflake);
+  $('body').prepend($snowflake);
+  // set timer on the following anonymous function...
+  setInterval(function() {
+    // if the divs top value is greater than the catchers top value,
+    if($snowflake.offset().top > (catcher.position().top)) {
+      // remove the div
+      $snowflake.remove();
+      // or else
+    } else {
+        // add a top value of 5 to the div
+        $snowflake.css('top', '+=5');
+      }
+      // adds top value every 10 milliseconds???
+    },10);
+    //runs the whole function every second.
+},1000);
 
 // creates divs that drop down
 function Box() {
@@ -37,7 +70,7 @@ function Box() {
         game.currentPlayer.score -= 1;
       }
       // sets score count
-      scoreboard.text(game.currentPlayer.score);
+      game.currentPlayer.scoreboard.text(game.currentPlayer.score);
       // removes div when top value reaches 726+
       $newDiv.remove();
       }
@@ -52,51 +85,71 @@ function Box() {
 }
 
 var $droppedDiv = $('.droppinDiv');
-var player1 = {name: "p1", score: 0};
-var player2 = {name: "p2", score: 0};
-var game = {};
-game.timeLimit = 30;
+// var player1 = {name: "p1", score: 0,};
+// var player2 = {name: "p2", score: 0};
+var game = {
+  player1: {
+    name: "p1",
+    score: 0,
+    scoreboard: $('#score1'),
+    timer: $('#timer1')
+  },
+  player2: {
+    name: "p2",
+    score: 0,
+    scoreboard: $('#score2'),
+    timer: $('#timer2')
+  }
+};
+game.timeLimit = 5;
 game.turnLimit = 2;
 game.turns = 0;
 game.time = game.timeLimit;
-game.players = [player1, player2];
-game.currentPlayer = game.players[0];
+// game.players = [player1, player2];
+game.currentPlayer = game.player1;
 // switches the turns of the players.
 game.switchPlayer = function() {
   // if current player is player 1,
-  if (game.currentPlayer === player1) {
+  if (game.currentPlayer == game.player2) {
     // then change it to player 2,
-    game.currentPlayer = player2;
+    game.currentPlayer = game.player1;
     // or else,
   } else {
     // the current player is player 1.
-    game.currentPlayer = player1;
+    game.currentPlayer = game.player2;
   }
 };
 
 // when the start button is clicked, run the following anonymous function...
 $('.start').on('click', function() {
+  // removes the start button
+  this.remove();
   // puts a timer on another anonymous function...
-  setInterval(function() {
+  scoreTimer = setInterval(function() {
     // if the Time is greater than 0,
     if (game.time > 0) {
       // decrease it by 1
       game.time = game.time - 1;
       // and change the text of the time to the current time.
-      theTime.text(game.time);
+      game.currentPlayer.timer.text(game.time);
     }
     // or else
     else {
       // end the Round
+      $('.droppinDiv').remove();
       alert("End Round!");
       // if the time is 0, run the switch player function
       game.switchPlayer();
       // put the time back to 30
       game.time = game.timeLimit;
+      console.log("time reset?", game.time);
       // increase the turn count by 1
       game.turns += 1;
       // and if number of turns is greater than or equal to the limit,
       if (game.turns >= game.turnLimit) {
+        clearInterval(boxTimer);
+        $('.droppinDiv').remove();
+        clearInterval(scoreTimer);
         // alert that the game is over,
         alert("Game Over!");
         // and run the show winner function.
@@ -106,7 +159,7 @@ $('.start').on('click', function() {
     // decreases the Time every 1 second.
   },1000);
   // puts a timer on the following anonymous function...
-  setInterval(function() {
+  boxTimer = setInterval(function() {
     // runs the Box function
     new Box();
     // runs it every second.
@@ -119,10 +172,13 @@ $('body').on('keypress', function(evt) {
   evt.preventDefault();
   // if the key that is pressed is a,
   if (evt.key == "a") {
-    // move the catcher to the left by 150px
-    catcher.animate({left: "-=150"});
+    if (catcher.offset().left >= 400) {
+      // move the catcher to the left by 150px
+      catcher.animate({left: "-=150"});
+    }
     // else if the key that is pressed is d,
   } else if (evt.key == "d") {
+    if (catcher.offset().left <= 1200)
     // move the catcher to the right by 150px
     catcher.animate({left: "+=150"});
   }
@@ -150,11 +206,11 @@ function collision(catcher, $droppedDiv) {
 // shows who the winner is
 function showWinner() {
   // if player 1's score is greater than player 2's score,
-  if (player1.score > player2.score) {
+  if (game.player1.score > game.player2.score) {
     // input text of "Player 1 wins" to the empty h1
     $('#winner').text("Player 1 wins!");
     // else if player 2's score is greater than player 1's score,
-  } else if (player2.score > player1.score) {
+  } else if (game.player2.score > game.player1.score) {
     // input text of "Player 2 wins" to the empty h1
     $('#winner').text("Player 2 wins!");
     // or else,
