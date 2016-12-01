@@ -1,9 +1,9 @@
-html {
-  min-height: 100%;
-  position: relative;
-}
 body {
   height: 100%;
+  width: 100%;
+  background-image: url('/Users/MattAlon/projects/project-one/northpole.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #scoreboard {
   height: 205px;
@@ -13,63 +13,16 @@ body {
   text-align: center;
   font-size: 20px;
   float: right;
-}
-#container1 {
-  position: absolute;
-  height: 555px;
-  width: 101px;
-  /*border: 1px solid black;*/
-  padding-bottom: 200px;
-  margin-left: 547px;
-  top: 27px;
-}
-#container2 {
-  position: absolute;
-  height: 555px;
-  width: 101px;
-  /*border: 1px solid black;*/
-  top: 27px;
-  left: 8px;
-  padding-bottom: 200px;
-  margin-left: 650px;
-}
-#container3 {
-  position: absolute;
-  height: 555px;
-  width: 101px;
-  /*border: 1px solid black;*/
-  top: 27px;
-  left: 111px;
-  padding-bottom: 200px;
-  margin-left: 650px;
-}
-#container4 {
-  position: absolute;
-  height: 555px;
-  width: 101px;
-  /*border: 1px solid black;*/
-  top: 27px;
-  left: 214px;
-  padding-bottom: 200px;
-  margin-left: 650px;
-}
-#container5 {
-  position: absolute;
-  height: 555px;
-  width: 101px;
-  /*border: 1px solid black;*/
-  top: 27px;
-  left: 317px;
-  padding-bottom: 200px;
-  margin-left: 650px;
+  margin-right: 25px;
 }
 #catcher {
   height: 20px;
-  width: 100px;
-  border: 1px solid black;
+  width: 150px;
+  /*border: 1px solid black;*/
   position: absolute;
   bottom: 0;
-  background: lightgrey;
+  top: 700px;
+  left: 50%;
 }
 #timer {
   color: teal;
@@ -83,25 +36,30 @@ body {
   font-weight: bold;
   font-size: 50px;
 }
+#winner {
+  text-align: center;
+  font-size: 111px;
+  color: black;
+  text-shadow: 1px 1px white;
+}
 .droppinDiv {
   height: 50px;
   width: 50px;
-  background: teal;
   display: block;
   position: absolute;
   margin-left: 25px;
 }
-.moveLeft {
-  position: relative;
-  bottom: 0;
-  margin: 0 auto;
-  top: 50px;
+.northpole {
+  height: 100%;
+  width: 100%;
 }
-.moveRight {
-  position: relative;
-  bottom: 0;
-  margin: 0 auto;
-  top: 50px;
+.present {
+  height: 75px;
+  width: 75px;
+}
+.santa {
+  width: 150px;
+  vertical-align: bottom;
 }
 .start {
   border-radius: 50%;
@@ -122,37 +80,6 @@ body {
   border-radius: 50%;
   color: white;
   box-shadow: 1px 1px 1px 1px black;
-}
-.moveLeft {
-  position: relative;
-  height: 50px;
-  width: 75px;
-  top: 725px;
-  left: 705px;
-  font-size: 20px;
-  color: teal;
-  font-weight: bold;
-  border-radius: 10%;
-}
-.moveRight {
-  position: relative;
-  height: 50px;
-  width: 75px;
-  top: 725px;
-  left: 725px;
-  font-size: 20px;
-  color: teal;
-  font-weight: bold;
-  margin-left: 20px;
-  border-radius: 10%;
-}
-.moveLeft:hover {
-  color: white;
-  text-shadow: 1px 1px 1px 1px black;
-}
-.moveRight:hover {
-  color: white;
-  text-shadow: 1px 1px 1px 1px black;
 }
 h1 {
   margin: 0 auto;
