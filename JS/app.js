@@ -1,13 +1,8 @@
 var main = $('#mainContainer');
 var catcher = $('#catcher');
-// var score = $('#score');
-// var score2 = $('#score2');
 var theTime = $('#timer');
-var Min = 100;
-var Max = 1075;
 $('body').append(catcher);
 catcher.html('<img src="./santa.png" class="santa">');
-// $('.navbar').css($(window))
 
 // generates random number between its min and max value
 function genRandomNum(min, max) {
@@ -43,6 +38,24 @@ setInterval(function() {
     //runs the whole function every second.
 },1000);
 
+function Bomb() {
+  var $newBomb = $('<div>');
+  $newBomb.addClass('hundreds');
+  $newBomb.css('left', '+=' + genRandomNum(400,1200));
+  $newBomb.html('<img src="./bomb.png" class="bomb">');
+  $('body').prepend($newBomb);
+  setInterval(function() {
+    if ($newBomb.offset().top > (catcher.position().top)) {
+      if (collision(catcher, $newBomb)) {
+        game.time = 0;
+      }
+    $newBomb.remove();
+  } else {
+    $newBomb.css('top', '+=5');
+  }
+  },10);
+}
+
 function Clock() {
   var $newClock = $('<div>');
   $newClock.addClass('droppinClock');
@@ -55,9 +68,9 @@ function Clock() {
         game.time += 5;
       }
       $newClock.remove();
-    } else {
+      } else {
       $newClock.css('top', '+=5');
-    }
+      }
   },10);
 }
 
@@ -101,10 +114,6 @@ function Box() {
         game.currentPlayer.score += 1;
       }
       // or else
-      else {
-        // minus 1 to score if they dont hit
-        game.currentPlayer.score -= 1;
-      }
       // sets score count
       game.currentPlayer.scoreboard.text(game.currentPlayer.score);
       // removes div when top value reaches 726+
@@ -121,8 +130,6 @@ function Box() {
 }
 
 var $droppedDiv = $('.droppinDiv');
-// var player1 = {name: "p1", score: 0,};
-// var player2 = {name: "p2", score: 0};
 var game = {
   player1: {
     name: "p1",
@@ -174,7 +181,9 @@ $('.start').on('click', function() {
       // end the Round
       alert("End Round!");
       $('.droppinDiv').remove();
-      $('.clock').remove();
+      $('.droppinClock').remove();
+      $('.droppinCoal').remove();
+      $('.hundreds').remove();
       catcher.css('left', '50%');
       // if the time is 0, run the switch player function
       game.switchPlayer();
@@ -186,6 +195,9 @@ $('.start').on('click', function() {
       if (game.turns >= game.turnLimit) {
         clearInterval(boxTimer);
         $('.droppinDiv').remove();
+        $('.droppinClock').remove();
+        $('.droppinCoal').remove();
+        $('.hundreds').remove();
         clearInterval(scoreTimer);
         // alert that the game is over,
         alert("Game Over!");
@@ -195,6 +207,10 @@ $('.start').on('click', function() {
     }
     // decreases the Time every 1 second.
   },1000);
+
+    setInterval(function() {
+      new Bomb();
+    },7000);
 
     setInterval(function() {
       new Coal();
@@ -212,22 +228,28 @@ $('.start').on('click', function() {
 
 });
 
-// adds event listener for key presses.
-$('body').on('keypress', function(evt) {
-  // prevents default action of the event
-  evt.preventDefault();
-  // if the key that is pressed is a,
-  if (evt.key == "a") {
-    if (catcher.offset().left >= 400) {
-      // move the catcher to the left by 150px
-      catcher.animate({left: "-=150"});
-    }
-    // else if the key that is pressed is d,
-  } else if (evt.key == "d") {
-    if (catcher.offset().left <= 1200)
-    // move the catcher to the right by 150px
-    catcher.animate({left: "+=150"});
-  }
+// // adds event listener for key presses.
+// $('body').on('keypress', function(evt) {
+//   // prevents default action of the event
+//   evt.preventDefault();
+//   // if the key that is pressed is a,
+//   if (evt.key == "a") {
+//     if (catcher.offset().left >= 400) {
+//       // move the catcher to the left by 150px
+//       catcher.animate({left: "-=150"});
+//     }
+//     // else if the key that is pressed is d,
+//   } else if (evt.key == "d") {
+//     if (catcher.offset().left <= 1200)
+//     // move the catcher to the right by 150px
+//     catcher.animate({left: "+=150"});
+//   }
+// });
+
+$(document).on('mousemove', function(e){
+    catcher.css({
+       left:  e.pageX,
+    });
 });
 
 // detects if the catcher and the div collide

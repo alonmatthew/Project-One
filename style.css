@@ -85,6 +85,12 @@ li {
   margin-left: 5px;
   margin-right: 5px;
 }
+.hundreds {
+  height: 50px;
+  width: 50px;
+  display: block;
+  position: absolute;
+}
 .droppinCoal {
   height: 50px;
   width: 50px;
@@ -126,6 +132,10 @@ li {
   width: 75px;
 }
 .clock {
+  height: 50px;
+  width: 50px;
+}
+.bomb {
   height: 50px;
   width: 50px;
 }
