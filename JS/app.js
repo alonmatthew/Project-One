@@ -23,7 +23,7 @@ setInterval(function() {
   // add an img to the div
   $snowflake.html('<img src="./snowflake.png" class="snowflakeImg">');
   // give it a random left value
-  $snowflake.css('left', '+=' + genRandomNum(100, 1600));
+  $snowflake.css('left', '+=' + genRandomNum(100, 1500));
   // add it twice to the body
   $('body').prepend($snowflake);
   $('body').prepend($snowflake);
@@ -43,14 +43,50 @@ setInterval(function() {
     //runs the whole function every second.
 },1000);
 
+function Clock() {
+  var $newClock = $('<div>');
+  $newClock.addClass('droppinClock');
+  $newClock.css('left', '+=' + genRandomNum(400, 1200));
+  $newClock.html('<img src="./clock.png" class="clock">');
+  $('body').prepend($newClock);
+  setInterval(function() {
+    if ($newClock.offset().top > (catcher.position().top)) {
+      if (collision(catcher, $newClock)) {
+        game.time += 5;
+      }
+      $newClock.remove();
+    } else {
+      $newClock.css('top', '+=5');
+    }
+  },10);
+}
+
+function Coal() {
+  var $newCoal = $('<div>');
+  $newCoal.addClass('droppinCoal');
+  $newCoal.css('left','+=' + genRandomNum(400, 1200));
+  $newCoal.html('<img src="./coal.png" class="coal">');
+  $('body').prepend($newCoal);
+  setInterval(function() {
+    if ($newCoal.offset().top > (catcher.position().top)) {
+      if (collision(catcher, $newCoal)) {
+        game.currentPlayer.score -= 3;
+      }
+    $newCoal.remove();
+    } else {
+    $newCoal.css('top', '+=5');
+    }
+    },10);
+}
+
 // creates divs that drop down
 function Box() {
   // created a new div and stored it in var
   var $newDiv = $('<div>');
-  // added class to the div
+    // added class to the div
   $newDiv.addClass('droppinDiv');
   // gives the div a random left value between 575 and 1075
-  $newDiv.css('left', '+=' + genRandomNum(575,1075));
+  $newDiv.css('left', '+=' + genRandomNum(400,1200));
   // sets the html of the div as a an img
   $newDiv.html('<img src="./present.png" class="present">');
   // adds div to the top of a random container
@@ -101,7 +137,7 @@ var game = {
     timer: $('#timer2')
   }
 };
-game.timeLimit = 5;
+game.timeLimit = 15;
 game.turnLimit = 2;
 game.turns = 0;
 game.time = game.timeLimit;
@@ -136,13 +172,14 @@ $('.start').on('click', function() {
     // or else
     else {
       // end the Round
-      $('.droppinDiv').remove();
       alert("End Round!");
+      $('.droppinDiv').remove();
+      $('.clock').remove();
+      catcher.css('left', '50%');
       // if the time is 0, run the switch player function
       game.switchPlayer();
       // put the time back to 30
       game.time = game.timeLimit;
-      console.log("time reset?", game.time);
       // increase the turn count by 1
       game.turns += 1;
       // and if number of turns is greater than or equal to the limit,
@@ -158,12 +195,21 @@ $('.start').on('click', function() {
     }
     // decreases the Time every 1 second.
   },1000);
+
+    setInterval(function() {
+      new Coal();
+    },5000);
+
+    setInterval(function() {
+      new Clock();
+    },10000);
   // puts a timer on the following anonymous function...
   boxTimer = setInterval(function() {
     // runs the Box function
     new Box();
     // runs it every second.
   },1000);
+
 });
 
 // adds event listener for key presses.
