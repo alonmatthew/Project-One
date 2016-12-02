@@ -1,6 +1,6 @@
 # Sleigh the Day
 Move Santa's Sleigh to catch as many falling presents as you can before time runs out!
-![alt tag](http://imgur.com/pt2P8w6)
+![alt tag](http://i.imgur.com/pZLAOWW.jpg)
 
 ## How to Play
 Use your mouse to control Santa's Sleigh left or right.
