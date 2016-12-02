@@ -53,7 +53,7 @@ function Bomb() {
   } else {
     $newBomb.css('top', '+=5');
   }
-  },10);
+},5);
 }
 
 function Clock() {
@@ -71,7 +71,7 @@ function Clock() {
       } else {
       $newClock.css('top', '+=5');
       }
-  },10);
+  },5);
 }
 
 function Coal() {
@@ -89,7 +89,7 @@ function Coal() {
     } else {
     $newCoal.css('top', '+=5');
     }
-    },10);
+  },5);
 }
 
 // creates divs that drop down
@@ -144,7 +144,7 @@ var game = {
     timer: $('#timer2')
   }
 };
-game.timeLimit = 15;
+game.timeLimit = 31;
 game.turnLimit = 2;
 game.turns = 0;
 game.time = game.timeLimit;
@@ -167,6 +167,7 @@ game.switchPlayer = function() {
 $('.start').on('click', function() {
   // removes the start button
   this.remove();
+  $('#gameTitle').remove();
   // puts a timer on another anonymous function...
   scoreTimer = setInterval(function() {
     // if the Time is greater than 0,
@@ -194,11 +195,15 @@ $('.start').on('click', function() {
       // and if number of turns is greater than or equal to the limit,
       if (game.turns >= game.turnLimit) {
         clearInterval(boxTimer);
+        clearInterval(bombTimer);
+        clearInterval(coalTimer);
+        clearInterval(clockTimer);
+        clearInterval(scoreTimer);
         $('.droppinDiv').remove();
         $('.droppinClock').remove();
         $('.droppinCoal').remove();
         $('.hundreds').remove();
-        clearInterval(scoreTimer);
+
         // alert that the game is over,
         alert("Game Over!");
         // and run the show winner function.
@@ -208,15 +213,15 @@ $('.start').on('click', function() {
     // decreases the Time every 1 second.
   },1000);
 
-    setInterval(function() {
+    bombTimer = setInterval(function() {
       new Bomb();
-    },7000);
+    },5000);
 
-    setInterval(function() {
+    coalTimer = setInterval(function() {
       new Coal();
     },5000);
 
-    setInterval(function() {
+    clockTimer = setInterval(function() {
       new Clock();
     },10000);
   // puts a timer on the following anonymous function...

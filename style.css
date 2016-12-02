@@ -4,6 +4,12 @@ body {
   background-repeat: no-repeat;
   width: 99%;
 }
+#gameTitle {
+  text-align: center;
+  font-size: 88px;
+  color: black;
+  text-shadow: 1px 1px white;
+}
 #scoreboard {
   height: 205px;
   width: 200px;
@@ -31,7 +37,7 @@ body {
   position: absolute;
   bottom: 0;
   top: 700px;
-  left: 50%;
+  left: 46%;
 }
 #timer1 {
   color: #40CAAB;
@@ -154,7 +160,7 @@ li {
   color: #6FF0C3;
   position: relative;
   top: 50px;
-  left: 37%;
+  left: 33%;
 }
 .start:hover {
   width: 160px;
