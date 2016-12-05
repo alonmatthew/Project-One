@@ -29,7 +29,7 @@ $(document).on('mousemove', function(e){
     });
 });
 
-game.timeLimit = 5;
+game.timeLimit = 15;
 game.turnLimit = 2;
 game.turns = 0;
 game.time = game.timeLimit;
