@@ -36,6 +36,7 @@ Points and seconds are added or deducted to each player's score board accordingl
 ## Future Adjustments
 * Make code **DRY**
 * Create logic to speed up the development of objects as the score adds up
+* Create separate button for player 2's start
 
 ### Acknowledgments
 Credit to the following:

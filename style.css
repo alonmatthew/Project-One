@@ -6,9 +6,9 @@ body {
 }
 #gameTitle {
   text-align: center;
-  font-size: 88px;
+  font-size: 111px;
   color: red;
-  text-shadow: 1px 1px white;
+  text-shadow: 3px 3px white;
   font-family: 'Henny Penny', cursive;
 }
 #scoreboard {
@@ -44,28 +44,28 @@ body {
 }
 #timer1 {
   color: #40CAAB;
-  text-shadow: 1px 1px lightgrey;
+  text-shadow: 2px 2px lightgrey;
   font-weight: bold;
   font-size: 50px;
   font-family: 'Berkshire Swash', cursive;
 }
 #timer2 {
   color: #40CAAB;
-  text-shadow: 1px 1px lightgrey;
+  text-shadow: 2px 2px lightgrey;
   font-weight: bold;
   font-size: 50px;
   font-family: 'Berkshire Swash', cursive;
 }
 #score1 {
   color: #40CAAB;
-  text-shadow: 1px 1px lightgrey;
+  text-shadow: 2px 2px lightgrey;
   font-weight: bold;
   font-size: 50px;
   font-family: 'Berkshire Swash', cursive;
 }
 #score2 {
   color: #40CAAB;
-  text-shadow: 1px 1px lightgrey;
+  text-shadow: 2px 2px lightgrey;
   font-weight: bold;
   font-size: 50px;
   font-family: 'Berkshire Swash', cursive;
@@ -74,7 +74,7 @@ body {
   text-align: center;
   font-size: 111px;
   color: red;
-  text-shadow: 1px 1px white;
+  text-shadow: 3px 3px white;
   font-family: 'Henny Penny', cursive;
 }
 .navbar {

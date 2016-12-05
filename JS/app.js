@@ -15,6 +15,7 @@ var game = {
   }
 };
 
+$('#winnerDiv').hide();
 $('.reset').hide();
 snowflake();
 $('#scoreboard').hide();
@@ -29,7 +30,7 @@ $(document).on('mousemove', function(e){
     });
 });
 
-game.timeLimit = 15;
+game.timeLimit = 30;
 game.turnLimit = 2;
 game.turns = 0;
 game.time = game.timeLimit;
@@ -162,7 +163,7 @@ function Box() {
       // removes div when top value reaches 726+
       $newDiv.remove();
       }
-    // and or else
+      // and or else
       else {
       // increases divs top value by 5
       $newDiv.css('top', '+=5');
@@ -223,6 +224,7 @@ $('.start').on('click', function() {
         // and run the show winner function.
         showWinner();
         $('.reset').show();
+        $('#winnerDiv').show();
         snowflake();
       }
     }
