@@ -14,15 +14,22 @@ var game = {
     timer: $('#timer2')
   }
 };
+
+$('.reset').hide();
+snowflake();
+$('#scoreboard').hide();
+$('#scoreboard2').hide();
+
 $('body').append(catcher);
 catcher.html('<img src="./santa.png" class="santa">');
-snowflake();
+
 $(document).on('mousemove', function(e){
     catcher.css({
        left:  e.pageX,
     });
 });
-game.timeLimit = 30;
+
+game.timeLimit = 5;
 game.turnLimit = 2;
 game.turns = 0;
 game.time = game.timeLimit;
@@ -72,7 +79,7 @@ function snowflake() {
       // adds top value every 10 milliseconds???
   },10);
     //runs the whole function every second.
-  },1000);
+  },2000);
 }
 
 function Bomb() {
@@ -168,6 +175,9 @@ function Box() {
 // when the start button is clicked, run the following anonymous function...
 $('.start').on('click', function() {
   // removes the start button
+  $('#scoreboard').show();
+  $('#scoreboard2').show();
+
   clearInterval(snowflakeTimer);
   this.remove();
   // removes game title
@@ -185,6 +195,7 @@ $('.start').on('click', function() {
     else {
       // end the Round
       alert("End Round!");
+      game.currentPlayer.timer.text(0);
       $('.droppinDiv').remove();
       $('.droppinClock').remove();
       $('.droppinCoal').remove();
@@ -211,28 +222,29 @@ $('.start').on('click', function() {
         alert("Game Over!");
         // and run the show winner function.
         showWinner();
+        $('.reset').show();
         snowflake();
       }
     }
     // decreases the Time every 1 second.
   },1000);
 
-    bombTimer = setInterval(function() {
-      new Bomb();
-    },6000);
+  bombTimer = setInterval(function() {
+    new Bomb();
+  },5000);
 
-    coalTimer = setInterval(function() {
-      new Coal();
-    },6000);
+  coalTimer = setInterval(function() {
+    new Coal();
+  },3000);
 
-    clockTimer = setInterval(function() {
-      new Clock();
-    },10000);
+  clockTimer = setInterval(function() {
+    new Clock();
+  },10000);
   // puts a timer on the following anonymous function...
-    boxTimer = setInterval(function() {
-    // runs the Box function
-    new Box();
-    // runs it every second.
+  boxTimer = setInterval(function() {
+  // runs the Box function
+  new Box();
+  // runs it every second.
   },1000);
 });
 
@@ -271,3 +283,7 @@ function showWinner() {
     $('#winner').text("Tie!");
   }
 }
+
+$('.reset').on('click', function() {
+  document.location.reload(true);
+});

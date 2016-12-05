@@ -1,5 +1,5 @@
 body {
-  background-image: url('/Users/MattAlon/projects/project-one/northpole.png');
+  background-image: url('northpole.png');
   background-size: cover;
   background-repeat: no-repeat;
   width: 99%;
@@ -82,7 +82,8 @@ body {
 }
 ul {
   width: 100%;
-  background-color: #C1C8C7;
+  /*background-color: #C1C8C7;*/
+  background: -webkit-linear-gradient(#C1C8C7, lightgrey);
 }
 a {
   text-decoration: none;
@@ -171,10 +172,32 @@ li {
   color: #6FF0C3;
   position: relative;
   top: 50px;
-  left: 33%;
+  left: 46%;
   font-family: 'Berkshire Swash', cursive;
 }
 .start:hover {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  color: white;
+  box-shadow: 2px 1px 2px 1px black;
+  font-family: 'Berkshire Swash', cursive;
+}
+.reset {
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  padding: 0;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #C1C8C7;
+  color: #6FF0C3;
+  position: relative;
+  top: 50px;
+  left: 33%;
+  font-family: 'Berkshire Swash', cursive;
+}
+.reset:hover {
   width: 160px;
   height: 160px;
   border-radius: 50%;
