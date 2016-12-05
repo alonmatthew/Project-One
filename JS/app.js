@@ -1,16 +1,53 @@
-var main = $('#mainContainer');
 var catcher = $('#catcher');
-var theTime = $('#timer');
+var $droppedDiv = $('.droppinDiv');
+var game = {
+  player1: {
+    name: "p1",
+    score: 0,
+    scoreboard: $('#score1'),
+    timer: $('#timer1')
+  },
+  player2: {
+    name: "p2",
+    score: 0,
+    scoreboard: $('#score2'),
+    timer: $('#timer2')
+  }
+};
 $('body').append(catcher);
 catcher.html('<img src="./santa.png" class="santa">');
-
+snowflake();
+$(document).on('mousemove', function(e){
+    catcher.css({
+       left:  e.pageX,
+    });
+});
+game.timeLimit = 30;
+game.turnLimit = 2;
+game.turns = 0;
+game.time = game.timeLimit;
+// game.players = [player1, player2];
+game.currentPlayer = game.player1;
+// switches the turns of the players.
+game.switchPlayer = function() {
+  // if current player is player 1,
+  if (game.currentPlayer == game.player2) {
+    // then change it to player 2,
+    game.currentPlayer = game.player1;
+    // or else,
+  } else {
+    // the current player is player 1.
+    game.currentPlayer = game.player2;
+    }
+};
 // generates random number between its min and max value
 function genRandomNum(min, max) {
   return Math.round((Math.random() * (max-min)) + min);
 }
 
+function snowflake() {
 // set timer on the following anonymous function...
-setInterval(function() {
+  snowflakeTimer = setInterval(function() {
   // create a new div
   var $snowflake = $('<div>');
   // add a class to the new div
@@ -20,7 +57,6 @@ setInterval(function() {
   // give it a random left value
   $snowflake.css('left', '+=' + genRandomNum(100, 1500));
   // add it twice to the body
-  $('body').prepend($snowflake);
   $('body').prepend($snowflake);
   // set timer on the following anonymous function...
   setInterval(function() {
@@ -34,9 +70,10 @@ setInterval(function() {
         $snowflake.css('top', '+=5');
       }
       // adds top value every 10 milliseconds???
-    },10);
+  },10);
     //runs the whole function every second.
-},1000);
+  },1000);
+}
 
 function Bomb() {
   var $newBomb = $('<div>');
@@ -50,10 +87,10 @@ function Bomb() {
         game.time = 0;
       }
     $newBomb.remove();
-  } else {
-    $newBomb.css('top', '+=5');
-  }
-},5);
+    } else {
+      $newBomb.css('top', '+=5');
+      }
+  },5);
 }
 
 function Clock() {
@@ -67,8 +104,8 @@ function Clock() {
       if (collision(catcher, $newClock)) {
         game.time += 5;
       }
-      $newClock.remove();
-      } else {
+    $newClock.remove();
+    } else {
       $newClock.css('top', '+=5');
       }
   },5);
@@ -87,8 +124,8 @@ function Coal() {
       }
     $newCoal.remove();
     } else {
-    $newCoal.css('top', '+=5');
-    }
+      $newCoal.css('top', '+=5');
+      }
   },5);
 }
 
@@ -113,7 +150,6 @@ function Box() {
         // adds +1 to score if $newDiv collides with catcher
         game.currentPlayer.score += 1;
       }
-      // or else
       // sets score count
       game.currentPlayer.scoreboard.text(game.currentPlayer.score);
       // removes div when top value reaches 726+
@@ -129,44 +165,12 @@ function Box() {
   return game.currentPlayer.score;
 }
 
-var $droppedDiv = $('.droppinDiv');
-var game = {
-  player1: {
-    name: "p1",
-    score: 0,
-    scoreboard: $('#score1'),
-    timer: $('#timer1')
-  },
-  player2: {
-    name: "p2",
-    score: 0,
-    scoreboard: $('#score2'),
-    timer: $('#timer2')
-  }
-};
-game.timeLimit = 31;
-game.turnLimit = 2;
-game.turns = 0;
-game.time = game.timeLimit;
-// game.players = [player1, player2];
-game.currentPlayer = game.player1;
-// switches the turns of the players.
-game.switchPlayer = function() {
-  // if current player is player 1,
-  if (game.currentPlayer == game.player2) {
-    // then change it to player 2,
-    game.currentPlayer = game.player1;
-    // or else,
-  } else {
-    // the current player is player 1.
-    game.currentPlayer = game.player2;
-  }
-};
-
 // when the start button is clicked, run the following anonymous function...
 $('.start').on('click', function() {
   // removes the start button
+  clearInterval(snowflakeTimer);
   this.remove();
+  // removes game title
   $('#gameTitle').remove();
   // puts a timer on another anonymous function...
   scoreTimer = setInterval(function() {
@@ -185,7 +189,7 @@ $('.start').on('click', function() {
       $('.droppinClock').remove();
       $('.droppinCoal').remove();
       $('.hundreds').remove();
-      catcher.css('left', '50%');
+      catcher.css('left', '46%');
       // if the time is 0, run the switch player function
       game.switchPlayer();
       // put the time back to 30
@@ -203,11 +207,11 @@ $('.start').on('click', function() {
         $('.droppinClock').remove();
         $('.droppinCoal').remove();
         $('.hundreds').remove();
-
         // alert that the game is over,
         alert("Game Over!");
         // and run the show winner function.
         showWinner();
+        snowflake();
       }
     }
     // decreases the Time every 1 second.
@@ -215,46 +219,21 @@ $('.start').on('click', function() {
 
     bombTimer = setInterval(function() {
       new Bomb();
-    },5000);
+    },6000);
 
     coalTimer = setInterval(function() {
       new Coal();
-    },5000);
+    },6000);
 
     clockTimer = setInterval(function() {
       new Clock();
     },10000);
   // puts a timer on the following anonymous function...
-  boxTimer = setInterval(function() {
+    boxTimer = setInterval(function() {
     // runs the Box function
     new Box();
     // runs it every second.
   },1000);
-
-});
-
-// // adds event listener for key presses.
-// $('body').on('keypress', function(evt) {
-//   // prevents default action of the event
-//   evt.preventDefault();
-//   // if the key that is pressed is a,
-//   if (evt.key == "a") {
-//     if (catcher.offset().left >= 400) {
-//       // move the catcher to the left by 150px
-//       catcher.animate({left: "-=150"});
-//     }
-//     // else if the key that is pressed is d,
-//   } else if (evt.key == "d") {
-//     if (catcher.offset().left <= 1200)
-//     // move the catcher to the right by 150px
-//     catcher.animate({left: "+=150"});
-//   }
-// });
-
-$(document).on('mousemove', function(e){
-    catcher.css({
-       left:  e.pageX,
-    });
 });
 
 // detects if the catcher and the div collide

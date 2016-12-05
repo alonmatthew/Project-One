@@ -7,11 +7,12 @@ body {
 #gameTitle {
   text-align: center;
   font-size: 88px;
-  color: black;
+  color: red;
   text-shadow: 1px 1px white;
+  font-family: 'Henny Penny', cursive;
 }
 #scoreboard {
-  height: 205px;
+  height: 222px;
   width: 200px;
   border: 5px dashed red;
   border-radius: 15%;
@@ -19,9 +20,10 @@ body {
   font-size: 20px;
   float: left;
   margin-left: 10px;
+  font-family: 'Berkshire Swash', cursive;
 }
 #scoreboard2 {
-  height: 205px;
+  height: 222px;
   width: 200px;
   border: 5px dashed red;
   border-radius: 15%;
@@ -29,6 +31,7 @@ body {
   font-size: 20px;
   float: right;
   margin-right: 25px;
+  font-family: 'Berkshire Swash', cursive;
 }
 #catcher {
   height: 20px;
@@ -44,30 +47,35 @@ body {
   text-shadow: 1px 1px lightgrey;
   font-weight: bold;
   font-size: 50px;
+  font-family: 'Berkshire Swash', cursive;
 }
 #timer2 {
   color: #40CAAB;
   text-shadow: 1px 1px lightgrey;
   font-weight: bold;
   font-size: 50px;
+  font-family: 'Berkshire Swash', cursive;
 }
 #score1 {
   color: #40CAAB;
   text-shadow: 1px 1px lightgrey;
   font-weight: bold;
   font-size: 50px;
+  font-family: 'Berkshire Swash', cursive;
 }
 #score2 {
   color: #40CAAB;
   text-shadow: 1px 1px lightgrey;
   font-weight: bold;
   font-size: 50px;
+  font-family: 'Berkshire Swash', cursive;
 }
 #winner {
   text-align: center;
   font-size: 111px;
-  color: black;
+  color: red;
   text-shadow: 1px 1px white;
+  font-family: 'Henny Penny', cursive;
 }
 .navbar {
   width: 98%;
@@ -79,17 +87,20 @@ ul {
 a {
   text-decoration: none;
   color: #6FF0C3;
+  font-family: 'Berkshire Swash', cursive;
 }
 a:hover {
   color: white;
   background: rgba(0,0,0,0.3);
+  font-family: 'Berkshire Swash', cursive;
 }
 li {
   display: inline-block;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
   margin-left: 5px;
   margin-right: 5px;
+  font-family: 'Berkshire Swash', cursive;
 }
 .hundreds {
   height: 50px;
@@ -161,6 +172,7 @@ li {
   position: relative;
   top: 50px;
   left: 33%;
+  font-family: 'Berkshire Swash', cursive;
 }
 .start:hover {
   width: 160px;
@@ -168,11 +180,7 @@ li {
   border-radius: 50%;
   color: white;
   box-shadow: 2px 1px 2px 1px black;
-}
-.elf {
-  height: 100px;
-  width: 100px;
-  border: 1px solid black;
+  font-family: 'Berkshire Swash', cursive;
 }
 h1 {
   margin: 0 auto;
