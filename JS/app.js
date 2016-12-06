@@ -14,6 +14,15 @@ var game = {
     timer: $('#timer2')
   }
 };
+// array of audio files
+var audio = [
+  new Audio('./Jrock.mp3'),
+  new Audio('./LetItSnow.mp3'),
+  new Audio('./ChristmasTree.mp3'),
+  new Audio('./ThisChristmas.mp3')
+];
+// chooses random index of audio array and plays it
+audio[genRandomNum(0,3)].play();
 
 // hides the reset button
 $('.reset').hide();
