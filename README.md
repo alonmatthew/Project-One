@@ -32,7 +32,7 @@ Points and seconds are added or deducted to each player's score board accordingl
 * As a user, when I click the start button, I want to see the timer start to count down
 * As a user, I should be able to move the Sleigh left and right with my mouse to catch the objects
 * As a user, when I catch an object, I should see the score or time increase or decrease accordingly
-* As a user, when I see the time run out, I should see the 2nd player's score board change
+* As a user, when I see the time run out and click the alert button, I should see the 2nd player's score board change
 * As a user, when the game is over, I should be able to see which player won at the end of the game
 
 ## Future Adjustments

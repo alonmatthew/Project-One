@@ -24,7 +24,7 @@ $('#scoreboard').hide();
 $('#scoreboard2').hide();
 
 // appends the catcher and sets an img to it
-$('body').append(catcher);
+// $('body').append(catcher);
 catcher.html('<img src="./santa.png" class="santa">');
 
 // event that makes the catcher follow where the mouse goes
@@ -256,7 +256,7 @@ $('.start').on('click', function() {
   },1000);
 });
 
-// detects if the catcher and the div collide
+// detects if 2 elements collide
 function collision(catcher, $droppedDiv) {
   var x1 = catcher.offset().left;
   var y1 = catcher.offset().top;
