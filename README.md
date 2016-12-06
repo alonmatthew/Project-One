@@ -1,9 +1,10 @@
 # Sleigh the Day
-Visit https://alonmatthew.github.io/Projects/ to play!
 Move Santa's Sleigh to catch as many falling presents as you can before time runs out!
 ![alt tag](http://i.imgur.com/NEeNuDz.jpg)
 
 ## How to Play
+Visit https://alonmatthew.github.io/Projects/ to play!
+
 Use your mouse to control Santa's Sleigh left or right.
 Each player has 30 seconds to catch the following objects:
 
