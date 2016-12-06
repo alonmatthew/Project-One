@@ -15,15 +15,19 @@ var game = {
   }
 };
 
-$('#winnerDiv').hide();
+// hides the reset button
 $('.reset').hide();
+// creates the snowflakes
 snowflake();
+// hides the scoreboards
 $('#scoreboard').hide();
 $('#scoreboard2').hide();
 
+// appends the catcher and sets an img to it
 $('body').append(catcher);
 catcher.html('<img src="./santa.png" class="santa">');
 
+// event that makes the catcher follow where the mouse goes
 $(document).on('mousemove', function(e){
     catcher.css({
        left:  e.pageX,
@@ -175,11 +179,12 @@ function Box() {
 
 // when the start button is clicked, run the following anonymous function...
 $('.start').on('click', function() {
-  // removes the start button
+  // reveal the scoreboards
   $('#scoreboard').show();
   $('#scoreboard2').show();
-
+  // stops the creation of snowflakes
   clearInterval(snowflakeTimer);
+  // removes the start button
   this.remove();
   // removes game title
   $('#gameTitle').remove();
@@ -196,11 +201,13 @@ $('.start').on('click', function() {
     else {
       // end the Round
       alert("End Round!");
+      // sets the timer text to 0
       game.currentPlayer.timer.text(0);
       $('.droppinDiv').remove();
       $('.droppinClock').remove();
       $('.droppinCoal').remove();
       $('.hundreds').remove();
+      // puts the catcher back to starting position
       catcher.css('left', '46%');
       // if the time is 0, run the switch player function
       game.switchPlayer();
@@ -223,30 +230,29 @@ $('.start').on('click', function() {
         alert("Game Over!");
         // and run the show winner function.
         showWinner();
+        // shows the hidden button
         $('.reset').show();
-        $('#winnerDiv').show();
+        // runs the snowflake function after the game is over
         snowflake();
       }
     }
     // decreases the Time every 1 second.
   },1000);
-
+  // creates a new bomb every 5 seconds
   bombTimer = setInterval(function() {
     new Bomb();
   },5000);
-
+  // creates a new coal every 3 seconds
   coalTimer = setInterval(function() {
     new Coal();
   },3000);
-
+  // creates a new clock every 10 seconds
   clockTimer = setInterval(function() {
     new Clock();
   },10000);
-  // puts a timer on the following anonymous function...
+  // creates a new box every second
   boxTimer = setInterval(function() {
-  // runs the Box function
   new Box();
-  // runs it every second.
   },1000);
 });
 
@@ -286,6 +292,7 @@ function showWinner() {
   }
 }
 
+// when you click on the reset button, reload the page
 $('.reset').on('click', function() {
   document.location.reload(true);
 });
