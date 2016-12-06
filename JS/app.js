@@ -16,7 +16,7 @@ var game = {
 };
 // array of audio files
 var audio = [
-  new Audio('./Jrock.mp3'),
+  new Audio('./JRock.mp3'),
   new Audio('./LetItSnow.mp3'),
   new Audio('./ChristmasTree.mp3'),
   new Audio('./ThisChristmas.mp3')
