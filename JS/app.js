@@ -51,13 +51,13 @@ game.time = game.timeLimit;
 game.currentPlayer = game.player1;
 // switches the turns of the players.
 game.switchPlayer = function() {
-  // if current player is player 1,
+  // if current player is player 2,
   if (game.currentPlayer == game.player2) {
-    // then change it to player 2,
+    // then change it to player 1,
     game.currentPlayer = game.player1;
     // or else,
   } else {
-    // the current player is player 1.
+    // the current player is player 2.
     game.currentPlayer = game.player2;
     }
 };
